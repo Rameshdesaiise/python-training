@@ -1,0 +1,233 @@
+--loops 
+
+
+print([i for i in range(10)])
+print([i for i in range(10) if i % 2 == 0])
+
+n = [1, 2, 3, 4, 5, 6, 7, 8]
+num = input("Please enter number")
+squares = [num**2 for num in n]
+print(squares)
+
+print({k: k**2 for k in range(1, 6)})
+
+tp = (45, 77, 109, 'data', ['hi', 'john'])
+print({k: tp[k] for k in range(len(tp))})
+
+print({tp.index(v): v for v in tp})
+
+x = 11
+if x == 10:
+    print("x is 10")
+    print("End of block")
+print("hello")
+
+y = 11
+if y == x:
+    print("both are equal")
+else:
+    print("unequal")
+
+for i in ('python'):
+    print(i, end=' ')
+
+for i in 'python':
+    print(i)
+
+for i in range(10):
+    print(i)
+
+x = int(input("Enter the number"))
+fact = 1
+for i in range(1, x+1):
+    fact = fact * i
+print("%d! = %d" % (x, fact))
+
+count = 5
+while count:
+    print(count)
+    count -= 1
+
+tempnum = num = int(input("enter the number"))
+fact = 1
+while num > 0:
+    fact = fact * num
+    num -= 1
+print(f"{tempnum}! = {fact}")
+
+
+
+
+
+--updated code
+
+
+ create emp pgm
+# create emp pgm
+emp_info = {}
+while True:
+    print("1. Create the employee information")
+    print("2. Update the employee details")
+    print("3. Delete Employee")
+    print("4. Display")
+    print("5. Exit")
+    ch = int(input("Enter your choice[1-4]:"))
+    if ch==1:
+        emp_id = int(raw_input("Enter employee id:"))
+        name = raw_input("Enter the name:")
+        ph=raw_input("Enter the phone number:")
+        tech = raw_input("Technologies [comma seprated e.g: C++, python, java]")
+        emp_info[emp_id] = {"name":name, "phone":ph, "tech": tech.split(",")}
+    elif ch==2:
+        emp_id = int(raw_input("Whose details you want to update?. Please enter emp_id:"))
+        rec = emp_info[emp_id]
+        for key, value in rec.items():
+            new = raw_input("{}({})".format(key, value))
+            emp_info[emp_id][key] = value if new == '' else new
+    elif ch==3:
+        emp_id = int(input("Whose details you want to Delete?. Please enter emp_id:"))
+        del emp_info[emp_id]
+    elif ch ==4:
+        print(emp_info)
+    else:
+        break
+		
+
+
+
+
+--Exception
+
+print("hello")
+k = 48
+try:
+    n = int(input("Enter the value"))
+    print(k / n)
+except ValueError as e:
+    print("Value error", str(e))
+except TypeError as e:
+    print("Type error", str(e))
+except Exception as e:
+    print("Exception error", str(e))
+finally:
+    print("Finally block")
+print("Block End")
+
+try:
+    n = int(input("Enter the value"))
+    print(k / n)
+except (ValueError, TypeError, Exception) as e:
+    print("Value error", str(e))
+finally:
+    print("Finally block")
+print("Block End")
+
+
+class ValueTooLow(Exception):
+    pass
+
+
+def check_age(n):
+    try:
+        print("start...")
+        raise ValueTooLow
+        print("one line")
+        raise ZeroDivisionError
+    except:
+        print("inside age")
+
+print("hello")
+k = 48
+try:
+    n = int(input("Enter the value"))
+    if n < 18:
+        raise ValueTooLow
+    print("Employment")
+except ValueError:
+    print("Value Error")
+except ValueTooLow as err:
+    print("inside value too low", err)
+
+
+
+--sets
+
+s = set()
+print(s)
+print(type(s))
+
+s = {1, 2, 3, 4, 5, 6, 6}
+print(s)
+print(type(s))
+
+
+def fn_print():
+    print("hello")
+    print("Welcome to python")
+    print("your age is 40")
+
+
+fn_print()
+
+
+def factorial(number):
+    print(number)
+    return number if number == 0 else number * factorial(number-1)
+    # if number == 0:
+    #     return
+    # else:
+    #     return number * factorial(number-1)
+
+
+print(factorial(5))
+
+
+def greeting(name, age):
+    """
+    this function greets with age
+    :param name: string
+    :param age: age
+    :return:
+    """
+    print("your age", age)
+    print("your name", name)
+
+
+greeting("Anup", 40)
+
+help(greeting)
+
+
+def discount(total, discount, *args, ph = '897', addr = 'test addr'):
+    print(total, discount)
+    for i in args:
+        print(i)
+    print(f'{ph} {addr}')
+
+
+discount(10, 20, 1, 2, 3, 4)
+
+
+def discount(total, discount, *args, **kwargs):
+    print(total, discount)
+    for i in args:
+        print(i)
+    print('%s %s' % (kwargs['ph'], kwargs['addr']))
+
+
+discount(10, 20, 1, 2, 3, 4, ph='456', addr='test')
+
+x = lambda y: y**2
+print(x(8))
+
+
+def square(x):
+    return x**2
+
+
+print(list(map(square, (2, 3, 4, 5))))
+
+print(list(map(lambda x: x**2, (2, 4, 6, 8))))
+
+print([word.upper() for word in ['python', 'is', 'good']])
+ 
